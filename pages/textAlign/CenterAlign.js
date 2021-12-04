@@ -6,7 +6,6 @@ const CenterAlign = props => {
                 textAlign: 'center'
             }}
         >
-            {console.log(props)}
             {props.children}
         </p>
     )

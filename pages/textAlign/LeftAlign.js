@@ -6,7 +6,6 @@ const LeftAlign = props => {
                 textAlign: 'left'
             }}
         >
-            {console.log(props)}
             {props.children}
         </p>
     )

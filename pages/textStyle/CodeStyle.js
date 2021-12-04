@@ -9,7 +9,7 @@ const CodeStyle = props => {
         setBoldText(props.leaf.bold ? 'bold' : 'normal')
         setItalicText(props.leaf.italic ? 'italic' : 'normal')
         setUnderlineText(props.leaf.underline ? 'underline' : 'none')
-    }, [props.leaf])
+    }, [props.children, props.leaf])
 
     return (
         <span
@@ -20,7 +20,6 @@ const CodeStyle = props => {
                 textDecoration: underlineText
             }}
         >
-            {console.log(props)}
             {props.children}
         </span>
     )
