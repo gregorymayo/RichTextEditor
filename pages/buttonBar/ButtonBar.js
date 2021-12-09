@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons'
 import styles from '../../styles/Home.module.css'
 
-const CustomEditor = {
+export const CustomEditor = {
     isBoldMarkActive(editor) {
         // A root-level Editor node that contains the entire document's content.
         const [match] = Editor.nodes(editor, {

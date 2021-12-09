@@ -7,7 +7,7 @@ import LeftAlign from './textAlign/LeftAlign.js'
 import CenterAlign from './textAlign/CenterAlign.js'
 import RightAlign from './textAlign/RightAlign.js'
 import CodeStyle from './textStyle/CodeStyle.js'
-import ButtonBar from './buttonBar/ButtonBar.js'
+import ButtonBar, { CustomEditor } from './buttonBar/ButtonBar.js'
 import styles from '../styles/Home.module.css'
 
 const App = () => {
@@ -57,6 +57,66 @@ const App = () => {
                             editor={editor}
                             renderElement={changeElement}
                             renderLeaf={changeStyle}
+                            onKeyDown={event => {
+                                if (event.metaKey || event.ctrlKey) {
+                                    switch (event.key) {
+                                        case 'b': {
+                                            event.preventDefault()
+                                            CustomEditor.toggleBoldMark(editor)
+                                            break
+                                        }
+                                        case 'i': {
+                                            event.preventDefault()
+                                            CustomEditor.toggleItalicMark(editor)
+                                            break
+                                        }
+                                        case 'u': {
+                                            event.preventDefault()
+                                            CustomEditor.toggleUnderlineMark(editor)
+                                            break
+                                        }
+                                        case '`': {
+                                            event.preventDefault()
+                                            CustomEditor.toggleCodeBlockMark(editor)
+                                            break
+                                        }
+                                    }
+                                    if (event.shiftKey) {
+                                        switch (event.key) {
+                                            case 'l': {
+                                                event.preventDefault()
+                                                CustomEditor.toggleLeftAlignTextMark(editor)
+                                                break
+                                            }
+                                            case 'L': {
+                                                event.preventDefault()
+                                                CustomEditor.toggleLeftAlignTextMark(editor)
+                                                break
+                                            }
+                                            case 'e': {
+                                                event.preventDefault()
+                                                CustomEditor.toggleCenterAlignTextMark(editor)
+                                                break
+                                            }
+                                            case 'E': {
+                                                event.preventDefault()
+                                                CustomEditor.toggleCenterAlignTextMark(editor)
+                                                break
+                                            }
+                                            case 'r': {
+                                                event.preventDefault()
+                                                CustomEditor.toggleRightAlignTextMark(editor)
+                                                break
+                                            }
+                                            case 'R': {
+                                                event.preventDefault()
+                                                CustomEditor.toggleRightAlignTextMark(editor)
+                                                break
+                                            }
+                                        }
+                                    }
+                                }
+                            }}
                         />
                     </Slate>
                 </div>
