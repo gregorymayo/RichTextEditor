@@ -1,4 +1,4 @@
-import { Editor, Transforms, Text } from 'slate'
+import { Editor, Transforms } from 'slate'
 import { Button } from 'antd'
 import {
     BoldOutlined,
@@ -22,12 +22,11 @@ export const CustomEditor = {
     },
     toggleBoldMark(editor) {
         const isActive = CustomEditor.isBoldMarkActive(editor)
-        // Transforms are functions that let us change the editor's value.
-        Transforms.setNodes(
-            editor,
-            { bold: isActive ? null : true },
-            { match: n => Text.isText(n), split: true }
-        )
+        if(isActive) {
+            Editor.removeMark(editor, "bold")
+        } else {
+            Editor.addMark(editor, "bold", true)
+        }
     },
     isItalicMarkActive(editor) {
         const [match] = Editor.nodes(editor, {
@@ -37,11 +36,11 @@ export const CustomEditor = {
     },
     toggleItalicMark(editor) {
         const isActive = CustomEditor.isItalicMarkActive(editor)
-        Transforms.setNodes(
-            editor,
-            { italic: isActive ? null : true },
-            { match: n => Text.isText(n), split: true }
-        )
+        if(isActive) {
+            Editor.removeMark(editor, "italic")
+        } else {
+            Editor.addMark(editor, "italic", true)
+        }
     },
     isUnderlineMarkActive(editor) {
         const [match] = Editor.nodes(editor, {
@@ -51,11 +50,11 @@ export const CustomEditor = {
     },
     toggleUnderlineMark(editor) {
         const isActive = CustomEditor.isUnderlineMarkActive(editor)
-        Transforms.setNodes(
-            editor,
-            { underline: isActive ? null : true },
-            { match: n => Text.isText(n), split: true }
-        )
+        if(isActive) {
+            Editor.removeMark(editor, "underline")
+        } else {
+            Editor.addMark(editor, "underline", true)
+        }
     },
     isCodeBlocMarkActive(editor) {
         const [match] = Editor.nodes(editor, {

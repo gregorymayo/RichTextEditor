@@ -11,7 +11,7 @@ import ButtonBar, { CustomEditor } from './buttonBar/ButtonBar.js'
 import styles from '../styles/Home.module.css'
 
 const App = () => {
-    const editor = useMemo( () => withReact(createEditor()), []) // Slate editor object
+    const editor = useMemo(() => withReact(createEditor()), []) // Slate editor object
     const [value, setValue] = useState([
         {
           type: 'paragraph',
